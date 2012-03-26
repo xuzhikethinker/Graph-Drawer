@@ -1,11 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 
 public class GUI extends JPanel{
 	JFrame frame;
+	JList list;
 	
 	private Color dotColor = Color.BLACK;
 	private int x, y; //Setup x and y coordinates for the dots
@@ -25,9 +30,19 @@ public class GUI extends JPanel{
 		
 		setBackground(Color.WHITE);
 		setSize(400,300);
+		setLayout(null);
 		
 		frame.getContentPane().add(this);
 		frame.setVisible(true);
+		
+		//Manage the JList
+		
+		String[] sList = {"bla", "blö", "blij"};
+		list = new JList(sList);
+		list.setVisibleRowCount(3);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		add(new JScrollPane(list));
+		
 	}
 	
 		public void paint(Graphics g){
