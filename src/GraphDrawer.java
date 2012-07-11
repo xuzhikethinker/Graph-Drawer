@@ -3,8 +3,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 public class GraphDrawer {
+	static GUI gui = new GUI();
+	
 	public static void main (String[] args){
-		GUI gui = new GUI();
 		
 		gui.paintDot(200, 250);
 		

@@ -8,14 +8,16 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 
 public class GUI extends JComponent{
-	JFrame f = new JFrame();
-	JPanel p = new JPanel();
-	Canvas c = new Canvas();
-	JButton button_add = new JButton();
+	private JFrame f = new JFrame();
+	private JPanel p = new JPanel();
+	private Canvas c = new Canvas();
+	private JButton button_add = new JButton();
+	private static JTextField input = new JTextField();
 	
 	private Color dotColor = Color.WHITE;
 	private int x, y; //Setup x and y coordinates for the dots
@@ -39,24 +41,29 @@ public class GUI extends JComponent{
 		
 		//Manage JPanel
 		p.setBackground(Color.WHITE);
-		p.setBounds(300,0,100,HEIGTH - 30);
+		p.setBounds(0,0,WIDTH,HEIGTH);
 		p.setLayout(null);
 		p.setVisible(true);
 		f.getContentPane().add(p);
 		
 		//Manage Canvas
-		c.setBackground(Color.GREEN);
-		c.setSize(300,HEIGTH -30);
-		f.add(c);
+		c.setBackground(Color.YELLOW);
+		c.setSize(WIDTH-100,HEIGTH -30);
+		p.add(c);
 		
+		//Manage JTextField
+		input.setText("x coordinates");
+		input.setBounds(320,150,60,20);
+		p.add(input);
 		
 		//Manage JButtons
 		button_add.setText("Add");
 		button_add.setBounds(320, 200, 60, 20);
+		button_add.addActionListener(new ComponentListener());
 		p.add(button_add);
 	}
 	
-		public void paintComponent(Graphics g){
+		public void paint(Graphics g){
 			super.paintComponent(g);
 			
 			g.setColor(Color.BLACK);
@@ -106,5 +113,9 @@ public class GUI extends JComponent{
 			repaint();//Hopefully calls the paint method
 			
 			System.out.println("Painting dot at: " + x + ", " + y);
+		}
+		
+		public static String getInputText(){
+			return input.getText();
 		}
 }
