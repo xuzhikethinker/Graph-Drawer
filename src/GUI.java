@@ -29,6 +29,8 @@ public class GUI extends JComponent{
 	final private int WIDTH = 400;
 	final private int HEIGTH = 300;
 	
+	
+	//This is some change from little comp
 	public GUI(){  //Setup the basic GUI
 	
 		//Manage JFrame 
